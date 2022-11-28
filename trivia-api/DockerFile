@@ -1,0 +1,10 @@
+FROM golang:1.19.3
+
+WORKDIR /usr/src/app
+
+# Refresh page when make so updates in app
+RUN go install github.com/cosmtrek/air@latest
+
+COPY . .
+
+RUN go mod tidy

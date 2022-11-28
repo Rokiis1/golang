@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - 4000:4000
+    volume:
+      - .:/usr/src/app
+    command: air run server/main.go -b 0.0.0.0
+  db:
+    image: postgres:alpine
+    enviroment:
+      - POSTGRES_URL=${DB_URL}
+    ports:
+      - 5432:5432
+    volume:
+      - postgres-db: /var/lib/postgresql/data
+
+volumes:
+  postgres-db:

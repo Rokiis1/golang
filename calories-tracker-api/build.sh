@@ -1,0 +1,1 @@
+go build -o ./main.go ./routes/connection.go ./routes/entries.go ./models/entry.go
